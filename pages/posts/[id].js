@@ -5,8 +5,11 @@ import Date from '../../components/date'
 import utilStyles from '../../styles/utils.module.css'
 
 
+
 export default function Post({ postData }) {
   return (
+    <>
+    
   <Layout>
 
       <Head>
@@ -24,11 +27,10 @@ export default function Post({ postData }) {
       </article>
       
   </Layout>
+  </>
   )
   
 }
-
-
 
 
 export async function getStaticPaths() {

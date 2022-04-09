@@ -3,10 +3,17 @@ import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import Date from '../components/date'
+import Nav from '../components/nav'
+
 
 export default function Home({ allPostsData }) {
   return (
+    <>
+    <Nav/>
     <Layout home>
+    
+
+    
       <Head>
         <title>{siteTitle}</title>
       </Head>
@@ -31,13 +38,15 @@ export default function Home({ allPostsData }) {
           </li>
           ))}
         </ul>
-        
       </section>
     </Layout>
+
+    </>
   )
 }
 
 import { getSortedPostsData } from '../lib/posts'
+
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
