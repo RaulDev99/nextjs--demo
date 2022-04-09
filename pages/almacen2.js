@@ -21,7 +21,7 @@ return(
             referencia:'',
             descripcion:'',
             proyecto:'',
-            fecha:'',
+            fecha:Date(),
             unidades:1,
             empleado:'',
         }}
