@@ -1,4 +1,4 @@
-import Layout from '../../components/layout'
+import Layout from '../../components/Borrarlayout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import Head from 'next/head'
 import Date from '../../components/date'
@@ -10,7 +10,7 @@ export default function Post({ postData }) {
   return (
     <>
     
-  <Layout>
+  {/* <Layout>
 
       <Head>
         <title>{postData.title}</title>
@@ -26,7 +26,7 @@ export default function Post({ postData }) {
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
       
-  </Layout>
+  </Layout> */}
   </>
   )
   
