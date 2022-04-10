@@ -7,7 +7,7 @@ import Link from 'next/link'
 const navigation = [
   { name: 'Almacén', href: '/almacen2', current: true },
   { name: 'Pedidos', href: '/pedidos', current: false },
-  { name: 'Historial', href: '/historial', current: false },
+  { name: 'Registro', href: '/registro', current: false },
   
 ]
 
@@ -164,12 +164,12 @@ export default function Nav() {
                   aria-current={item.current ? 'page' : undefined}
                 >
                   <Link href={item.href}>
-                  <a className={classNames(
+                  <p className={classNames(
                     item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                     'block px-3 py-2 rounded-md text-base font-medium'
                   )}>
                     {item.name}
-                    </a>
+                  </p>
                   </Link>
                 </Disclosure.Button>
               ))}

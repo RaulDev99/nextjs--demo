@@ -1,19 +1,52 @@
 import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
+import Layout, { siteTitle } from '../components/Borrarlayout'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import Date from '../components/date'
 import Nav from '../components/nav'
+import '../firebase/firebase'
+import Footer from '../components/footer'
 
+
+
+// import { useStorage } from '../context/StorageContext'
 
 export default function Home({ allPostsData }) {
+
+  
+
+  // const {storage} = useStorage()
+
   return (
     <>
-    <Nav/>
-    <Layout home>
-    
 
+    <Nav/>
+
+
+
+
+
+    <Footer/>
+    {/* {
+      storage.lenght === 0 ?(
+      <h1>No se han sacado productos de almacén aun</h1>
+      ): (
+        <div>
+        {storage.map(elemento => (
+            <div key="elemento.id">
+              <h1>
+                {elemento.referencia}
+              </h1>
+              <h2>{elemento.descripccion}</h2>
+              <p>{elemento.proyecto}</p>
+            </div>
+        ))}
+        </div>
+      )
+    } */}
     
+    
+    {/* <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
@@ -39,21 +72,22 @@ export default function Home({ allPostsData }) {
           ))}
         </ul>
       </section>
-    </Layout>
+    </Layout> */}
 
     </>
   )
 }
 
-import { getSortedPostsData } from '../lib/posts'
+// import { getSortedPostsData } from '../lib/posts'
 
 
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
-  console.log(allPostsData)
-  return {
-    props: {
-      allPostsData
-    }
-  }
-}
+
+// export async function getStaticProps() {
+//   const allPostsData = getSortedPostsData()
+//   console.log(allPostsData)
+//   return {
+//     props: {
+//       allPostsData
+//     }
+//   }
+// }
