@@ -8,7 +8,7 @@ return(
     
         <Link href='/pedidos'>
         <div className="bg-blue-500 w-full rounded-lg flex items-center justify-center hover:bg-blue-400 flex-col font-bold text-gray-800">
-        <ClipboardCheckIcon className=" h-16 mb-2" ></ClipboardCheckIcon>  
+        <ClipboardCheckIcon className="h-16 mb-2" ></ClipboardCheckIcon>  
         <h1 >PEDIDOS</h1>
             
         </div>
