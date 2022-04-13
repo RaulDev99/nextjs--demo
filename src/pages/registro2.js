@@ -1,4 +1,4 @@
-import SubMenuFecha from "../components/Registro/SubmenuFecha"
+
 import { CalendarIcon } from '@heroicons/react/outline'
 import { useState } from "react"
 
