@@ -15,7 +15,7 @@ export default function Registro2 (){
     }
     const toggleSubMenuTodosActive= (e)=>{
         setSubMenuTodosActive(e.target.innerText)
-        console.log('click')
+        
     }
 
     return(
