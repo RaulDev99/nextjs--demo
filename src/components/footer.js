@@ -29,7 +29,7 @@ return(
         {/* <div className="bg-green-500 w-1/2    bottom-0"></div> */}
         
         
-            <Link href='/registro'>
+            <Link href='/registro2'>
             <div className="bg-blue-500 w-full rounded-lg flex items-center justify-center flex-col hover:bg-blue-400 font-bold text-gray-800 ">
             <ChartBarIcon className=" h-16 mb-2" ></ChartBarIcon> 
             <h1 >REGISTRO</h1>
