@@ -37,7 +37,7 @@ export default function Registro2 (){
         {/* SUBMENU FECHA */}
 
         { menuTopActive === 'Fecha' ? 
-            <div className='grid grid-cols-5 text-center text-sm mt-4 font-bold text-gray-600 mx-2'>
+            <div className='grid grid-cols-5 text-center text-xs mt-4 font-bold text-gray-600 mx-2'>
                 <h2 onClick={toggleSubMenuFechaActive} className={subMenuFechaActive === 'Todos'  ? 'bg-blue-400 rounded-md p-2 transition-all': 'm-2'}>Todos</h2>
                 <h2 onClick={toggleSubMenuFechaActive} className={subMenuFechaActive === 'Diario'  ? 'bg-blue-400 rounded-md p-2 transition-all': 'm-2'}>Diario</h2>
                 <h2 onClick={toggleSubMenuFechaActive} className={subMenuFechaActive === 'Semanal'  ? 'bg-blue-400 rounded-md p-2 transition-all': 'm-2'}>Semanal</h2>
