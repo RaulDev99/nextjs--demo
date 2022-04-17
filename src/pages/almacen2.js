@@ -23,21 +23,22 @@ export default function Almacen(){
     useEffect(()=>{
         var today = new Date() 
         setFechaActual(today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2))
-        
     },[]);
+    
     const {añadirElemento} = useStorage()
     const {push} = useRouter()
 
-
-    
+    console.log(fechaActual)
+    // `${day}/${month}/${year}`
     const añadirArticulos = async (valores)=>{
-        
+        const date = new Date();
+        const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
         try{
             const docRef = await addDoc(collection(db,'almacen'),{
             referencia:valores.referencia,
             descripcion:valores.descripcion,
             proyecto:valores.proyecto,
-            fecha:valores.fecha,
+            fecha: fechaActual,
             unidades:valores.unidades,
             empleado:valores.empleado,})
             console.log("Documento enviado con ID:", docRef.id)

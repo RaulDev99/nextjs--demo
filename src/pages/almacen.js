@@ -38,7 +38,7 @@ export default function Almacen(){
     const { name, value } = e.target;
     
     setFormValue({ ...formValue, [name]: value });
-    e.target.setCustomValidity("Please select a date in the past.")
+    // e.target.setCustomValidity("Please select a date in the past.")
     
    }
 
