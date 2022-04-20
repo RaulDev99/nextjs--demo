@@ -1,12 +1,14 @@
 
-import Nav from '../components/nav'
+import Footer from '../components/footer'
+
 export default function Pedidos(){
 return(
     <>
-    <Nav/>
-    <div>
+    
+    
     <h1>PEDIDOS</h1>
-    </div>
+    
+    <Footer></Footer>
     </>
 )
 }

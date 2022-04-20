@@ -56,8 +56,8 @@ return(
     <Nav/>
     
     <h1 className="text-2xl font-bold mt-8 text-center">Sacar elemento del alamacén</h1>
-    <form onSubmit={handleSacar}>
-        <div className="m-8">
+    <form onSubmit={handleSacar} className="m-8">
+        
 
             <label>Referencia</label>
             <input id="referencia"  name="referencia" required onChange={handleOnChange} type="number" placeholder="..." className="appearance-none block w-full bg-gray-200 text-gray-700 border border-blue-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-50" />
@@ -92,7 +92,7 @@ return(
                 SACAR
             </button>
 
-        </div>
+        
 
     </form>
     

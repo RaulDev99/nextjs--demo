@@ -2,36 +2,21 @@
 import Nav from '../components/nav'
 import '../firebase/firebase'
 import Footer from '../components/footer'
-
-
-
+import { ProtectedRoutes } from '../components/auth/ProtectedRoutes'
+import InfoUser from '../components/auth/infoUser'
 
 export default function Home() {
-
-
-
   return (
     <>
+     
+      <ProtectedRoutes>
 
-    <Nav/>
-    
-    <Footer/>
-    
+        <InfoUser/>
+        
+        <Footer/>
+
+      </ProtectedRoutes>
 
     </>
   )
 }
-
-// import { getSortedPostsData } from '../lib/posts'
-
-
-
-// export async function getStaticProps() {
-//   const allPostsData = getSortedPostsData()
-//   console.log(allPostsData)
-//   return {
-//     props: {
-//       allPostsData
-//     }
-//   }
-// }

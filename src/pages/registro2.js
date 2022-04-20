@@ -8,6 +8,7 @@ import {collection,getDoc, orderBy , query,limit ,doc, setDoc, getDocs, where} f
 
 import { CalendarIcon } from '@heroicons/react/outline'
 import SubMenuFechasTodos from '../components/MenuRegistro/SubMenuFechasTodos';
+import Footer from '../components/footer'
 
 const menuTop = [
     { 
@@ -91,7 +92,7 @@ export default function Registro2 (){
 
             <SubMenuFechasTodos type={subMenuFechaActive}></SubMenuFechasTodos>    : null }
 
-            
+            <Footer/>
         </>
     )
 }
