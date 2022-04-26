@@ -9,10 +9,6 @@ import {collection,getDoc, orderBy , query,limit ,doc, setDoc, getDocs, where} f
 import { ChevronRightIcon, ChevronLeftIcon} from '@heroicons/react/outline'
 
 
-
-
-
-
 const SubMenuFechasTodos = ( {type}) => {
     const [subMenuTodosActive,setSubMenuTodosActive] = useState('Mas reciente')
     const [ordenFecha,setOrdenFecha]=useState('desc')
@@ -22,10 +18,9 @@ const SubMenuFechasTodos = ( {type}) => {
     const [fechaActual,setFechaActual] = useState ({})
     const [count, setCount] = useState(0)
 
-    console.log(type)
+    
     const getInfo = async ()=>{
         const q = query(collection(db, "almacen"),orderBy('fecha',ordenFecha));
-
         const querySnapshot = await getDocs(q);
         const docs=[];
         const fechas=[];
@@ -43,6 +38,8 @@ const SubMenuFechasTodos = ( {type}) => {
         });
         setDatos(docs)
         setFechasDistintas(fechas)
+        
+        
     }
         
 
@@ -97,17 +94,25 @@ const SubMenuFechasTodos = ( {type}) => {
                 </div>
             
                 
-                    {fechasDistintas.map(fecha=>{
+                    {fechasDistintas.map(fechas=>{
                                     return(
-                                        <div  key={fecha}>
+                                        <div  key={fechas}>
                                             <div className="flex justify-center my-3 text-sm ">
-                                            <h1 className=" bg-white py-1 px-2  rounded-xl" >{moment(fecha).format(`DD [de] MMMM [de] YYYY`)}</h1>
+                                            <h1 className=" bg-white py-1 px-2  rounded-xl" >{moment(fechas).format(`DD [de] MMMM [de] YYYY`)}</h1>
                                             </div>
                                             {
-                                                datos.map(element=>{
+                                                datos.map(({id,descripcion,referencia,unidades,proyecto,empleado,fecha})=>{
                                                     return(
-                                                        fecha == element.fecha ?
-                                                        <CardRegistro element={element} key={element.id}></CardRegistro>
+                                                        fechas == fecha ?
+                                                        <CardRegistro
+                                                         key={id} 
+                                                         id={id} 
+                                                         descripcion={descripcion}
+                                                         referencia={referencia}
+                                                         unidades={unidades}
+                                                         proyecto={proyecto}
+                                                         empleado={empleado}
+                                                         />
                                                         : null
                                                     )
                                                     })
@@ -132,12 +137,20 @@ const SubMenuFechasTodos = ( {type}) => {
                             <ChevronRightIcon onClick={incrementarFecha} className="h-6 mx-2"></ChevronRightIcon>
                         </div> 
                         {   
-                            datos.map(element=>{
-                                if (fechaActual == element.fecha){
+                            datos.map(({id,descripcion,referencia,unidades,proyecto,empleado,fecha})=>{
+                                if (fechaActual == fecha){
                                     return(
-                                        <div key={element.id}>
-                                            <CardRegistro element={element} ></CardRegistro>  
-                                    </div>
+                                        <div key={id}>
+                                            <CardRegistro
+                                                key={id} 
+                                                id={id} 
+                                                descripcion={descripcion}
+                                                referencia={referencia}
+                                                unidades={unidades}
+                                                proyecto={proyecto}
+                                                empleado={empleado}
+                                                /> 
+                                        </div>
                                     ) 
                                 }
                                 })

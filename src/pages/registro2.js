@@ -1,14 +1,15 @@
 
-import { useEffect } from 'react'
+
 import { useState } from "react"
-import db from '../firebase/firebase'
 
 
-import {collection,getDoc, orderBy , query,limit ,doc, setDoc, getDocs, where} from 'firebase/firestore'
+
 
 import { CalendarIcon } from '@heroicons/react/outline'
 import SubMenuFechasTodos from '../components/MenuRegistro/SubMenuFechasTodos';
 import Footer from '../components/footer'
+import SubMenuProyecto from "../components/MenuRegistro/SubMenuProyecto";
+
 
 const menuTop = [
     { 
@@ -32,13 +33,8 @@ const menuTop = [
 export default function Registro2 (){
     const [menuTopActive,setMenuTopActive] = useState ('Fecha')
     const [subMenuFechaActive,setSubMenuFechaActive] = useState ('Todos')
-    // const [subMenuTodosActive,setSubMenuTodosActive] = useState ('Mas reciente')
-
-    
-
-
-    
-
+    const [subMenuTodosActive,setSubMenuTodosActive] = useState ('Mas reciente')
+    const [data,setData]= useState()
 
     const toggleMenuTopActive= (e)=>{
         setMenuTopActive(e.target.innerText)
@@ -47,11 +43,14 @@ export default function Registro2 (){
     const toggleSubMenuFechaActive= (e)=>{
         setSubMenuFechaActive(e.target.innerText)
     }
+
     return(
         
 
 
-        <>
+        <div className="mb-20">
+
+            
         <div className='font-bold  grid grid-cols-3 text-center mt-2'>
                 <h1 onClick={toggleMenuTopActive} className={menuTopActive === 'Fecha'  ? 'border-b border-blue-400 p-2': 'm-2'}>Fecha</h1>
                 <h1 onClick={toggleMenuTopActive} className={menuTopActive === 'Proyecto'  ? 'border-b border-blue-400 p-2 ': 'm-2'}>Proyecto</h1>
@@ -80,19 +79,24 @@ export default function Registro2 (){
             
             {/* SUBMENU FECHA TODOS */}
             
-            { menuTopActive === 'Fecha' && subMenuFechaActive  === 'Todos' ? 
+            { menuTopActive === 'Fecha'  ? 
 
             <SubMenuFechasTodos type={subMenuFechaActive}></SubMenuFechasTodos>  : null }
 
-            { menuTopActive === 'Fecha' && subMenuFechaActive  === 'Diario' ? 
+            { menuTopActive === 'Proyecto'  ? 
+
+            <SubMenuProyecto ></SubMenuProyecto>  : null }
+
+            {/* { menuTopActive === 'Fecha' && subMenuFechaActive  === 'Diario' ? 
 
             <SubMenuFechasTodos type={subMenuFechaActive}></SubMenuFechasTodos>    : null }
 
             { menuTopActive === 'Fecha' && subMenuFechaActive  === 'Calendario' ? 
 
-            <SubMenuFechasTodos type={subMenuFechaActive}></SubMenuFechasTodos>    : null }
+            <SubMenuFechasTodos type={subMenuFechaActive}></SubMenuFechasTodos>    : null } */}
+            
 
             <Footer/>
-        </>
+        </div>
     )
 }

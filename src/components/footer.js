@@ -14,7 +14,7 @@ export default function Footer (){
           active: true,
         },
         {
-          label: 'Sacar items',
+          label: 'Sacar',
           url: "/almacen2",
           icon: <PlusIcon/>,
           active: false,
@@ -36,14 +36,14 @@ export default function Footer (){
 return(
     
     <>
-        <div className="w-full h-12  fixed bottom-0 flex bg-gray-50 border-t-1 border-gray-300  items-center justify-around text-gray-700 ">
+        <div className="w-full h-14  fixed bottom-0 flex bg-gray-50 border-t-1 border-gray-300  items-center justify-around text-gray-700">
                 
                 
                 {MenuItems.map((item,index)=>{
                     return(
                         
-                        <div className=''>
-                            <Link href={item.url} key={index}>
+                        <div className='' key={index}>
+                            <Link href={item.url} >
                                 <div className={`cursor-pointer hover:bg-none text-center font-bold ${
                                     router.asPath === item.url
                                         ? "text-blue-500"

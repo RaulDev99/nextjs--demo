@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext'
 
 
+
 export default function InfoUser() {
   const {user,signout,loading} = useAuth()
   const {push} = useRouter()
@@ -23,6 +24,7 @@ const handleLogOut = async () => {
 
   return (
     <>
+    
     <div>
         <h1>Welcome {user?.email}</h1>
         <Link href='/signin'>                       

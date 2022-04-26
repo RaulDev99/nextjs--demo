@@ -2,40 +2,60 @@ import React from 'react'
 import { CalendarIcon ,ChevronDownIcon, ChevronRightIcon, FilterIcon, PencilIcon} from '@heroicons/react/outline'
 import { useState } from "react"
 
-const CardRegistro = ({element : {id,descripcion,referencia,unidades,proyecto,empleado}}) => {
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+
+const CardRegistro = ( {id,descripcion,referencia,unidades,proyecto,empleado}) => {
     
+    const router = useRouter()
     const [expanded, setExpanded] = useState(false);
     const handleExpandClick = () => {
         setExpanded(!expanded);
        
       };
-      const handleEditar = () => {
-        console.log('CARD EDITAR')
+    //   const handleEditar = () => {
+    //     router.push(`/registro/${id}`)
        
-      };
+    //   };
       
   return (
       <>
       
       
-    <div  className="m-2 p-2 shadow-lg rounded-md bg-white" >  
-        <div  className="flex  items-center "> 
-            <div onClick={handleExpandClick} className=" flex items-center ">
-                {expanded ? <ChevronDownIcon  className= 'h-8 mr-4 ml-2'></ChevronDownIcon> : <ChevronRightIcon className= 'h-8 mr-4 ml-2'></ChevronRightIcon> }                                     
-                <div className="flex">
-                    <ul>
-                        <li><b> {referencia} </b></li>
-                        {descripcion ? <li className="text-gray-700">{descripcion}</li> : <li className="text-gray-700" > ------- </li>}
-                    </ul>
+    <div  className="m-2 p-2 shadow-lg rounded-md bg-white " >  
+
+    <div className="grid grid-cols-3 items-center ">
+        <div className="flex truncate items-center col-span-2" onClick={handleExpandClick}>
+                <div  >
+                {expanded ? <ChevronDownIcon  className= 'h-8 mr-8 ml-2  '></ChevronDownIcon> : <ChevronRightIcon className= 'h-8 mr-8 ml-2 '></ChevronRightIcon> }
                 </div>
-            </div>
-                <div onClick={handleEditar} className="flex bg-blue-500 ml-auto mr-2 rounded-md p-1 items-center text-white font-medium">
-                    <PencilIcon className="h-5 mr-1 "></PencilIcon>
-                    <h2>EDITAR</h2>
-                </div>
+
+                    <div className="flex flex-col  truncate  ">
+                        
+                        <p className="font-bold ">{referencia }</p> 
+                        {expanded ? null : <p className="truncate text-gray-600 font-semibold">{descripcion}</p>} 
+                    </div>
+       
         </div>  
 
-        <div className={expanded ? 'm-4 ' : 'hidden' }>
+        {expanded ? null :
+        <div className=" ml-auto">
+                        <Link href={`/registro/${id}`}>
+                            <button  className="flex bg-blue-500  mr-2 rounded-md p-1 items-center text-white font-medium ">
+                                    <PencilIcon className="h-5 mr-1 "></PencilIcon>
+                                    <h2>EDITAR</h2>
+                            </button>
+                        </Link>
+        </div>
+        }
+        
+    </div>
+    
+    
+         
+
+        <div className={expanded ? 'm-2 ' : 'hidden' }>
+        {expanded ? <p className=" text-gray-600 font-medium text-center mb-2 bg-blue-200 ">{descripcion}</p> : null  }
             <div className='flex justify-between mx-6'>
                 <div className=' '>
                     <h2 >Proyecto: </h2>
@@ -49,8 +69,18 @@ const CardRegistro = ({element : {id,descripcion,referencia,unidades,proyecto,em
                 </div>
             </div>
 
-           
+            {expanded ? 
+            <div className="justify-center flex mt-4">
+                <Link href={`/registro/${id}`}>
+                <button  className="flex bg-blue-500  mr-2 rounded-md p-1 items-center text-white font-medium ">
+                        <PencilIcon className="h-5 mr-1 "></PencilIcon>
+                        <h2>EDITAR</h2>
+                </button>
+                </Link>
+            </div>  
+                : null  }
         </div>
+
     </div>
     
         
