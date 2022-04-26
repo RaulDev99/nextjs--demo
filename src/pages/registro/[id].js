@@ -26,7 +26,7 @@ EditarRegistro.getInitialProps=(context)=>{
     const {query}=context
     const{id}=query
     
-    
+    // Cambiar el fetch
     return fetch (`https://topaction.me/api/registro/${id}`).then(
        
         (apiResponse)=>{
