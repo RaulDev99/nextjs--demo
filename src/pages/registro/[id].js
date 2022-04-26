@@ -27,7 +27,7 @@ EditarRegistro.getInitialProps=(context)=>{
     const{id}=query
     
     
-    return fetch (`http://localhost:3000/api/registro/${id}`).then(
+    return fetch (`https://topaction.me/api/registro/${id}`).then(
        
         (apiResponse)=>{
             if (apiResponse.ok) 
