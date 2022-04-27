@@ -24,26 +24,26 @@ const CardRegistro = ( {id,descripcion,referencia,unidades,proyecto,empleado}) =
       
     <div  className="m-2 p-2 shadow-lg rounded-md bg-white " >  
 
-    <div className="grid grid-cols-3 items-center ">
-        <div className="flex truncate items-center col-span-2" onClick={handleExpandClick}>
+    <div className="grid grid-cols-5 items-center ">
+        <div className="flex truncate items-center col-span-4 " onClick={handleExpandClick}>
                 <div  >
-                {expanded ? <ChevronDownIcon  className= 'h-8 mr-8 ml-2  '></ChevronDownIcon> : <ChevronRightIcon className= 'h-8 mr-8 ml-2 '></ChevronRightIcon> }
+                {expanded ? <ChevronDownIcon  className= 'h-8 mr-4 ml-2  '></ChevronDownIcon> : <ChevronRightIcon className= 'h-8 mr-4 ml-2 '></ChevronRightIcon> }
                 </div>
 
-                    <div className="flex flex-col  truncate  ">
-                        
-                        <p className="font-bold ">{referencia }</p> 
-                        {expanded ? null : <p className="truncate text-gray-600 font-semibold">{descripcion}</p>} 
-                    </div>
+                <div className="flex flex-col  truncate  ">
+                    
+                    <p className="font-bold ">{referencia }</p> 
+                    {expanded ? null : <p className="truncate text-gray-600 font-semibold">{descripcion}</p>} 
+                </div>
        
         </div>  
 
         {expanded ? null :
-        <div className=" ml-auto">
-                        <Link href={`/registro/${id}`}>
-                            <button  className="flex bg-blue-500  mr-2 rounded-md p-1 items-center text-white font-medium ">
-                                    <PencilIcon className="h-5 mr-1 "></PencilIcon>
-                                    <h2>EDITAR</h2>
+        <div className=" ml-auto flex justify-center ">
+                        <Link href={`/registro/${id}`} >
+                            <button  className=" bg-blue-500 p-2 mr-2 rounded-md   text-white font-medium ">
+                                    <PencilIcon className="h-7  "></PencilIcon>
+                                    <h2></h2>
                             </button>
                         </Link>
         </div>
