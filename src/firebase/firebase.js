@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 
-import { getFirestore,collection,addDoc, getDocs, orderBy,getDoc,doc, query} from 'firebase/firestore';
+import { getFirestore,collection,addDoc, getDocs, orderBy,getDoc,doc, query, Timestamp, where} from 'firebase/firestore';
 import {getAuth} from 'firebase/auth'
 
 
@@ -50,12 +50,14 @@ export const auth = getAuth(app)
 export default db;
 
 
-export const addData = async(referencia,descripcion,proyecto) => {
+export const addPedido = async(referencia,descripcion,unidadesAlmacen,estado) => {
   try {
-    const docRef = await addDoc(collection(db, "prueba"), {
-      id,
+    const docRef = await addDoc(collection(db, "pedidos"), {
+      referencia,
       descripcion,
-      proyecto
+      unidadesAlmacen,
+      estado,
+      createdAt:Timestamp.fromDate(new Date())
     });
     console.log("Document written with ID: ", docRef.id);
   } catch (e) {
@@ -63,6 +65,91 @@ export const addData = async(referencia,descripcion,proyecto) => {
   }
 }
 
+export const getPedidos = async (ordenFecha)=>{
+  try{
+    const q = query(collection(db, "pedidos"),orderBy('createdAt',ordenFecha));
+    const querySnapshot = await getDocs(q);
+    const docs=[];
+    
+
+    
+
+    querySnapshot.forEach((doc) => {
+        const data = doc.data()
+        const id = doc.id
+        
+        
+        //get fecha normal
+        const date = new Date(doc.data().createdAt.seconds * 1000)
+        const fechaNormalizada = new Intl.DateTimeFormat('es-Es',{dateStyle:"long"}).format(date)
+        
+        //get timeAgo (Numbers)
+        const {createdAt} = data
+
+        docs.push({
+            ...data,
+            id,
+            // get time ago (Numbers)
+            timeAgo: +createdAt.toDate(),
+            //get fecha normal
+            createdAt: fechaNormalizada, 
+        })
+        
+        
+    });
+    
+    
+    return docs
+    
+  }
+  catch(e){
+    console.error("Error adding document: ", e);
+  }
+  
+      
+}
+
+export const getPedidosPendientes = async ()=>{
+  
+  try{
+    const q = query(collection(db, "pedidos"),where("estado","==","Pendiente de enviar"));
+    const querySnapshot = await getDocs(q);
+    const docs=[];
+    
+    querySnapshot.forEach((doc) => {
+        const data = doc.data()
+        const id = doc.id
+        
+        
+        //get fecha normal
+        const date = new Date(doc.data().createdAt.seconds * 1000)
+        const fechaNormalizada = new Intl.DateTimeFormat('es-Es',{dateStyle:"long"}).format(date)
+        
+        //get timeAgo (Numbers)
+        const {createdAt} = data
+
+        docs.push({
+            ...data,
+            id,
+            // get time ago (Numbers)
+            timeAgo: +createdAt.toDate(),
+            //get fecha normal
+            createdAt: fechaNormalizada, 
+        })
+        
+        
+    });
+    
+    
+    return docs
+    
+  }
+  catch(e){
+    console.error("Error adding document: ", e);
+  }
+  
+      
+}
 
 export const getData = async ()=>{
   const q = query(collection(db, "almacen"));
@@ -72,6 +159,7 @@ export const getData = async ()=>{
       querySnapshot.forEach((doc) => {
       docs.push({...doc.data(),id:doc.id})
       });
+      
   return docs
 }
 

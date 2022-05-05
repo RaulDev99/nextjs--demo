@@ -9,9 +9,6 @@ import Slider from '@mui/material/Slider';
 
 export default function Almacen(){
 
-
-   
-
     const [date,setDate]= useState('')
     const [unidades,setUnidades]= useState('')
     const [formValue,setFormValue]= useState({
@@ -34,7 +31,7 @@ export default function Almacen(){
 
     
      
-   const handleOnChange = (e) =>{
+    const handleOnChange = (e) =>{
     const { name, value } = e.target;
     
     setFormValue({ ...formValue, [name]: value });

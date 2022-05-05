@@ -83,6 +83,8 @@ export default function Registro2 (){
 
             <SubMenuFechasTodos type={subMenuFechaActive}></SubMenuFechasTodos>  : null }
 
+
+            {/* SUBMENU PROYECTO */}
             { menuTopActive === 'Proyecto'  ? 
 
             <SubMenuProyecto ></SubMenuProyecto>  : null }
