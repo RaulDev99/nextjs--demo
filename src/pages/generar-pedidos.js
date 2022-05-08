@@ -91,7 +91,7 @@ export default function GenerarPedidos(){
               ],
             
           })
-        // doc.save('prueba.pdf')
+        doc.save('prueba.pdf')
         setPedidoSelected([])
         
         setPedidoRealizado(true)
