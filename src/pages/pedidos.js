@@ -1,5 +1,6 @@
 
 import { useState } from 'react'
+import { ProtectedRoutes } from '../components/auth/ProtectedRoutes'
 import Footer from '../components/footer'
 import MenuHistorialPedidos from '../components/Pedidos/MenuHistorialPedidos'
 import MenuRealizarPedidos from '../components/Pedidos/MenuRealizarPedidos'
@@ -19,6 +20,7 @@ export default function Pedidos(){
 
 return(
     <>
+    <ProtectedRoutes>
     
 
     <div className='font-bold  grid grid-cols-2 text-center mt-2 '>
@@ -46,6 +48,8 @@ return(
         
 
     <Footer></Footer>
+    </ProtectedRoutes>
     </>
+
 )
 }

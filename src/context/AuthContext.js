@@ -39,11 +39,7 @@ export function AuthProvider ({children}) {
           setUser(currentUser);
           setLoading(false)
         });
-        // if (currentUser) {
-        //     console.log("signed in!");
-        //   } else if (currentUser == null) {
-        //     router.push("/login");
-        //   }
+        
 
         return () => unsubscribe();
       }, []);

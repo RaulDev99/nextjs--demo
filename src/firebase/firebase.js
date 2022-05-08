@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 
-import { getFirestore,collection,addDoc, getDocs, orderBy,getDoc,doc, query, Timestamp, where} from 'firebase/firestore';
+import { getFirestore,collection,addDoc, getDocs, orderBy,getDoc,doc, query, Timestamp, where, updateDoc} from 'firebase/firestore';
 import {getAuth} from 'firebase/auth'
 
 
@@ -149,6 +149,13 @@ export const getPedidosPendientes = async ()=>{
   }
   
       
+}
+
+export const updatePedidos = async(id) => {
+  const ref = doc(db, "pedidos", id);
+  await updateDoc(ref, {
+    estado: "Enviado"
+  });
 }
 
 export const getData = async ()=>{

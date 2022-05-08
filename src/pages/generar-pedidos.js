@@ -5,7 +5,7 @@ import Footer from "../components/footer";
 import TimeAgo from "../components/Pedidos/TimeAgo";
 import { jsPDF } from "jspdf";
 import 'jspdf-autotable'
-import { getPedidosPendientes } from "../firebase/firebase";
+import { getPedidosPendientes, updatePedidos } from "../firebase/firebase";
 import { Field, Form, Formik } from "formik";
 import { makePublicRouterInstance } from "next/router";
 
@@ -38,10 +38,11 @@ export default function GenerarPedidos(){
     const [idPendientes,setIdPendientes]= useState([])
     const [generarPedidos,setGenerarPedidos] = useState ([])
     const [errorMessage,setErrorMessage] = useState ([])
+    const [pedidoRealizado,setPedidoRealizado] = useState(false)
     useEffect(()=>{
             getPedidosPendientes().then(setPedidosPendientes)
-            
-        },[])
+            setPedidoRealizado(false)
+        },[pedidoRealizado])
         
     useEffect(()=>{
         pedidosPendientes.map((element)=>{
@@ -50,14 +51,19 @@ export default function GenerarPedidos(){
     },[pedidosPendientes])
 
     useEffect(()=>{
+        
         pedidosPendientes.map((pedido)=>{
             
-            if (pedido.isChecked && pedidoSelected.includes(pedido)== false){
-                console.log("in")
+            if (pedido.isChecked ){
+                // && !pedidoSelected.includes(pedido)
+                if (pedidosPendientes.length)
+                
                 setPedidoSelected(oldSelect=>[...oldSelect,pedido])
+
+
             }else {
                 
-                if(pedido.isChecked == false){
+                if(!pedido.isChecked ){
                     pedidoSelected.splice(pedido)
                 } 
             }  
@@ -69,7 +75,9 @@ export default function GenerarPedidos(){
     const generarAhora = async() =>{
         
         console.log(pedidoSelected)
-        setPedidoSelected([])
+        pedidoSelected.map((pedido)=>{
+            updatePedidos(pedido.id)
+        })
         
      if (pedidoSelected.length>0) {
         const doc = new jsPDF()
@@ -83,11 +91,15 @@ export default function GenerarPedidos(){
               ],
             
           })
-        doc.save('prueba.pdf')
+        // doc.save('prueba.pdf')
         setPedidoSelected([])
+        
+        setPedidoRealizado(true)
         }else{
             setErrorMessage("Debes seleccionar al menos un elemento")
         }
+
+        
         
      }   
 
@@ -95,18 +107,24 @@ export default function GenerarPedidos(){
     const { name, checked } = e.target;
     
     if (name === "allSelect") {
+        
       let tempUser = pedidosPendientes.map((user) => {
         return { ...user, isChecked: checked };
         
       });
-      
       setPedidosPendientes(tempUser);
+      setPedidoSelected([])
     } else {
+
       let tempUser = pedidosPendientes.map((pedido) =>
-        pedido.id === name ? { ...pedido, isChecked: checked } : pedido
+        pedido.id === name ? 
+        { ...pedido, isChecked: checked } 
+        : pedido
+        
       );
-      setPedidosPendientes(tempUser);
       
+      setPedidosPendientes(tempUser);
+      setPedidoSelected([])
     }
     setErrorMessage()
   };
@@ -116,10 +134,10 @@ export default function GenerarPedidos(){
     return(
              <div className="mb-20">
                  {errorMessage ? <div className="italic flex justify-center text-red-500">{errorMessage}</div> :null}
-                 
-                 
-                 
 
+                 {pedidosPendientes == '' ?<div className="text-center italic p-4">No tienes pedidos pendientes para generar</div>
+                 :
+                 <div>
                 <form >
                     <div className="flex justify-center items-center mt-2">
                         <input 
@@ -176,21 +194,22 @@ export default function GenerarPedidos(){
                                     <button type="submit">Submit</button> 
                                     
                                  </div>
-                                 
-                                          
-                                 
-                                 
                                                
                              </div>
                                
                      )})}
-                </form>  
+                         
+                </form> 
+                        <div className=" mx-4 text-white"  >
+                            <button onClick={generarAhora} type="submit" className="bg-blue-400 p-2 font-semibold rounded-md w-full ">GENERAR AHORA</button>
+                        </div>
+                </div>
+                 }
+                 
 
-                                 <div className="m-4 text-white"  >
-                                    <button onClick={generarAhora} type="submit" className="bg-blue-400 p-2 font-semibold rounded-md w-full">
-                                        GENERAR AHORA
-                                    </button>
-                                 </div> 
+
+                
+                                 
 
              <Footer></Footer>
                
