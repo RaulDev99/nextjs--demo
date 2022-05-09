@@ -22,6 +22,8 @@ export default function MenuRealizarPedidos(){
         },
         
     ]
+
+    
     return (
         
         <div className="mb-20">
@@ -32,7 +34,9 @@ export default function MenuRealizarPedidos(){
                 referencia:'',
                 descripcion:'',
                 unidadesAlmacen:0,
-                estado:'Pendiente de enviar'
+                estado:'Pendiente de enviar',
+                formatoUnidades:`unidades`
+                
             
             }}
             validate={(valores)=>{
@@ -46,7 +50,7 @@ export default function MenuRealizarPedidos(){
             }}
             onSubmit={(valores)=>{
                 console.log(valores)
-                addPedido(valores.referencia,valores.descripcion,valores.unidadesAlmacen,valores.estado)
+                addPedido(valores.referencia,valores.descripcion,valores.unidadesAlmacen,valores.estado,valores.formatoUnidades)
                 setPedidoAñadido(true)
             }}
             >
@@ -75,10 +79,27 @@ export default function MenuRealizarPedidos(){
                                     name="unidadesAlmacen" 
                                     as={Slider} 
                                     min={0} 
-                                    max={15}>
+                                    max={100}>
                                 </Field>
                                 <div className=" flex items-center justify-center ">
                                     <h2 className="px-3 py-1 mb-3 bg-gray-50 rounded-md border-2 border-blue-400">{values.unidadesAlmacen}</h2>
+                                </div>
+
+                                <div className="grid grid-cols-2 mx-10  ">
+                                    <label>
+                                    <Field className="accent-blue-500 mr-2  mt-4" type="radio" name="formatoUnidades" value="unidades"  />
+                                    Unidades
+                                    </label>
+
+                                    <label className="">
+                                    <Field className="accent-blue-500 mr-2 mt-4" type="radio" name="formatoUnidades" value="metros" />
+                                    Metros
+                                    </label>
+
+                                    <label>
+                                    <Field className="accent-blue-500 mr-2 mt-4" type="radio" name="formatoUnidades" value="cajas" />
+                                    Cajas
+                                    </label>
                                 </div>
                                 <button id="unidades"  type="submit" className=" mt-8 tracking-widest block w-full bg-blue-400 text-white border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none active:bg-blue-300 " >
                                     AÑADIR A PEDIDOS

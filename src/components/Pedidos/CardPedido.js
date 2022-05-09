@@ -1,6 +1,7 @@
 import TimeAgo from "./TimeAgo";
 
-export default function CardPedido ({descripcion,referencia,unidadesAlmacen,timeAgo,estado}){
+export default function CardPedido ({descripcion,referencia,unidadesAlmacen,timeAgo,estado,formatoUnidades}){
+    console.log(formatoUnidades)
     return(
         <div  className="bg-white flex-row m-1  py-2 px-6 rounded-md shadow-lg ">
                                         <div className="flex items-center px-6">
@@ -15,7 +16,7 @@ export default function CardPedido ({descripcion,referencia,unidadesAlmacen,time
                                         <h1 className="bg-blue-200 text-center">{descripcion}</h1>
 
                                         <div>
-                                            <h1 className="">Unidades en el almacen: {unidadesAlmacen} </h1>
+                                            <h1 className="">{formatoUnidades == "metros" ? "Metros": formatoUnidades== "cajas" ? "Cajas" : "Unidades"} en el almacen: {unidadesAlmacen} </h1>
                                             {estado == 'Pendiente de enviar' ?
                                             <div className="flex items-center font-semibold italic text-red-500 ">
                                                 <div className="h-2 w-2  mr-2 bg-red-500  rounded-full" ></div>

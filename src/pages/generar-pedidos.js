@@ -81,17 +81,27 @@ export default function GenerarPedidos(){
         
      if (pedidoSelected.length>0) {
         const doc = new jsPDF()
-    
+        const date= new Date()
+        const day = date.getDate()
+        const month = date.getMonth()
+        const year = date.getFullYear()
+
+        
         doc.autoTable({
             body: pedidoSelected,
+            headStyles:{halign:'center'},
+            bodyStyles:{halign:'center'},
             columns: [
                 { header: 'Referencia', dataKey: 'referencia' },
-                { header: 'Descricpcion', dataKey: 'descripcion' },
-                { header: 'Unidades en el almacen', dataKey: 'unidadesAlmacen' },
+                { header: 'Descripcion', dataKey: 'descripcion' },
+                { header: `Unidades en el almacen`, dataKey: 'unidadesAlmacen'},
+                { header: `Formato`, dataKey: 'formatoUnidades'}
+                
               ],
+
             
           })
-        doc.save('prueba.pdf')
+        doc.save(`${day}_${month + 1}_${year}-Pedidos.pdf`)
         setPedidoSelected([])
         
         setPedidoRealizado(true)
@@ -180,7 +190,7 @@ export default function GenerarPedidos(){
                                     <h1 className="bg-blue-200 text-center">{pedido.descripcion}</h1>
                                  
                                     <div>
-                                        <h1 className="">Unidades en el almacen: {pedido.unidadesAlmacen} </h1>
+                                    <h1 className="">{pedido.formatoUnidades == "metros" ? "Metros": pedido.formatoUnidades== "cajas" ? "Cajas" : "Unidades"} en el almacen: {pedido.unidadesAlmacen} </h1>
                                         {
                                         pedido.estado == 'Pendiente de enviar' ?
                                         <div className="flex items-center font-semibold italic text-red-500 ">
@@ -191,8 +201,6 @@ export default function GenerarPedidos(){
                                         }
                                      
                                     </div> 
-                                    <button type="submit">Submit</button> 
-                                    
                                  </div>
                                                
                              </div>

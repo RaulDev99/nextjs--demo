@@ -50,13 +50,14 @@ export const auth = getAuth(app)
 export default db;
 
 
-export const addPedido = async(referencia,descripcion,unidadesAlmacen,estado) => {
+export const addPedido = async(referencia,descripcion,unidadesAlmacen,estado,formatoUnidades) => {
   try {
     const docRef = await addDoc(collection(db, "pedidos"), {
       referencia,
       descripcion,
       unidadesAlmacen,
       estado,
+      formatoUnidades,
       createdAt:Timestamp.fromDate(new Date())
     });
     console.log("Document written with ID: ", docRef.id);
@@ -119,7 +120,8 @@ export const getPedidosPendientes = async ()=>{
     querySnapshot.forEach((doc) => {
         const data = doc.data()
         const id = doc.id
-        
+        const unidadesConFormato = `${data.unidadesAlmacen} ${data.formatoUnidades } `
+        console.log(unidadesConFormato)
         
         //get fecha normal
         const date = new Date(doc.data().createdAt.seconds * 1000)

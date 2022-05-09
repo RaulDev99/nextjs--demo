@@ -78,6 +78,7 @@ export default function MenuHistorialPedidos (){
 
     return(
         <div className="mb-20">
+           
                 <div className='grid grid-cols-2 text-center font-bold text-gray-600 mt-1'>
                     <h2 onClick={toggleSubMenuTodosActive} className={subMenu === 'Mas reciente'  ? 'bg-gray-700 text-white rounded-sm p-2  transition-all': 'm-2'} >Mas reciente</h2>
                     <h2 onClick={toggleSubMenuTodosActive} className={subMenu === 'Mas antiguo'  ? 'bg-gray-700 text-white rounded-sm p-2 transition-all': 'm-2'}>Mas antiguo</h2>
@@ -91,6 +92,7 @@ export default function MenuHistorialPedidos (){
                 subMenuEstado == 'Enviado' ? 
                     <section>
                             {
+                                
                             fechasDistintasEnviado != '' ?
                             fechasDistintasEnviado.map(fechas=>{
                             return(
@@ -99,7 +101,8 @@ export default function MenuHistorialPedidos (){
                                     <h1 className=" bg-white py-1 px-2  rounded-xl" >{fechas}</h1>
                                 </div>
                                 {
-                                            pedidos.map(({id,descripcion,referencia,createdAt,unidadesAlmacen,timeAgo,estado})=>{
+                                    
+                                            pedidos.map(({id,descripcion,referencia,createdAt,unidadesAlmacen,timeAgo,estado,formatoUnidades})=>{
                                                 
                                                 return(
 
@@ -113,7 +116,8 @@ export default function MenuHistorialPedidos (){
                                                                 referencia={referencia}
                                                                 unidadesAlmacen={unidadesAlmacen}
                                                                 timeAgo={timeAgo}
-                                                                estado={estado}>  
+                                                                estado={estado}
+                                                                formatoUnidades={formatoUnidades}>  
                                                                 </CardPedido>
                                                             </div>
                                                         
@@ -146,7 +150,7 @@ export default function MenuHistorialPedidos (){
                                     <h1 className=" bg-white py-1 px-2  rounded-xl" >{fechas}</h1>
                                 </div>
                                 {
-                                            pedidos.map(({id,descripcion,referencia,createdAt,unidadesAlmacen,timeAgo,estado})=>{
+                                            pedidos.map(({id,descripcion,referencia,createdAt,unidadesAlmacen,timeAgo,estado,formatoUnidades})=>{
                                                 
                                                 return(
 
@@ -160,7 +164,8 @@ export default function MenuHistorialPedidos (){
                                                                 referencia={referencia}
                                                                 unidadesAlmacen={unidadesAlmacen}
                                                                 timeAgo={timeAgo}
-                                                                estado={estado}>  
+                                                                estado={estado}
+                                                                formatoUnidades={formatoUnidades} >   
                                                                 </CardPedido>
                                                             </div>
                                                         
