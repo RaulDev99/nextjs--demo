@@ -24,7 +24,7 @@ export default function Home() {
     
      
       <ProtectedRoutes>
-
+ 
         <InfoUser/>
         <div className="grid grid-rows-2    text-center  text-white">
           <div className="m-4">

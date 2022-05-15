@@ -28,7 +28,7 @@ export default function MenuHistorialPedidos (){
 
     useEffect(()=>{
         
-    },)
+    },[ordenFecha])
     
     const getData= async() =>{
         const fechasDiferentesEnviado= []
@@ -38,7 +38,6 @@ export default function MenuHistorialPedidos (){
          pedido.forEach((i)=>{
             
              if (i.estado ==  "Enviado"){
-                console.log("hola")
                     if (fechasDiferentesEnviado.includes(i.createdAt)){
                         null
                     }else{
@@ -117,7 +116,8 @@ export default function MenuHistorialPedidos (){
                                                                 unidadesAlmacen={unidadesAlmacen}
                                                                 timeAgo={timeAgo}
                                                                 estado={estado}
-                                                                formatoUnidades={formatoUnidades}>  
+                                                                formatoUnidades={formatoUnidades}
+                                                                >  
                                                                 </CardPedido>
                                                             </div>
                                                         
@@ -165,7 +165,8 @@ export default function MenuHistorialPedidos (){
                                                                 unidadesAlmacen={unidadesAlmacen}
                                                                 timeAgo={timeAgo}
                                                                 estado={estado}
-                                                                formatoUnidades={formatoUnidades} >   
+                                                                formatoUnidades={formatoUnidades} 
+                                                                id={id}>   
                                                                 </CardPedido>
                                                             </div>
                                                         

@@ -57,8 +57,8 @@ export default function  EditElement (props)  {
           })
     }
 
-    const deleteData = async (valores) =>{
-        let deleteDocument = doc(db,'almacen',props.id);
+    const deleteData = async (id) =>{
+        let deleteDocument = doc(db,'almacen',id);
         
         deleteDoc(deleteDocument)
         .then(()=>{

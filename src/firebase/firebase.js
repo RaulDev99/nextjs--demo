@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 
-import { getFirestore,collection,addDoc, getDocs, orderBy,getDoc,doc, query, Timestamp, where, updateDoc} from 'firebase/firestore';
+import { getFirestore,collection,addDoc, getDocs, orderBy,getDoc,doc, query, Timestamp, where, updateDoc, deleteDoc} from 'firebase/firestore';
 import {getAuth} from 'firebase/auth'
 
 
@@ -27,6 +27,7 @@ const firebaseConfig = {
   // storageBucket: "almacen-demo-6a485.appspot.com",
   // messagingSenderId: "483541978120",
   // appId: "1:483541978120:web:bc7e188ad0c4798ac0d5bd"
+ 
   
 
   // apiKey: `${process.env.REACT_APP_FIREBASE_APIKEY}`,
@@ -71,15 +72,10 @@ export const getPedidos = async (ordenFecha)=>{
     const q = query(collection(db, "pedidos"),orderBy('createdAt',ordenFecha));
     const querySnapshot = await getDocs(q);
     const docs=[];
-    
-
-    
 
     querySnapshot.forEach((doc) => {
         const data = doc.data()
         const id = doc.id
-        
-        
         //get fecha normal
         const date = new Date(doc.data().createdAt.seconds * 1000)
         const fechaNormalizada = new Intl.DateTimeFormat('es-Es',{dateStyle:"long"}).format(date)
@@ -158,6 +154,23 @@ export const updatePedidos = async(id) => {
   await updateDoc(ref, {
     estado: "Enviado"
   });
+}
+
+export const deletePedido = async (id) =>{
+  
+  let deleteDocument = doc(db,'pedidos',id);
+  
+  deleteDoc(deleteDocument)
+  
+}
+
+export const onAuthStateChanged = (onChange)=>{
+  return firebase
+  .auth()
+  .onAuthStateChanged(user=>{
+    const normalizedUser= mapUserFromAuthToUser(user)
+    onChange(normalizedUser)
+  })
 }
 
 export const getData = async ()=>{

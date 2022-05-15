@@ -1,0 +1,162 @@
+[
+   {
+      "unidadesAlmacen":1,
+      "estado":"Enviado",
+      "descripcion":"Etiquetas USEMLP(27x18)",
+      "createdAt":"10 de mayo de 2022",
+      "referencia":"",
+      "formatoUnidades":"cajas",
+      "id":"ex2khY3OKAewKJlj5vFj",
+      "timeAgo":1652171516191
+   },
+   {
+      "unidadesAlmacen":2,
+      "estado":"Enviado",
+      "descripcion":"Etiquetas US-EMLP(15x5)",
+      "formatoUnidades":"cajas",
+      "referencia":"",
+      "createdAt":"10 de mayo de 2022",
+      "id":"dhUPg5aKZjI0R4XZnBSF",
+      "timeAgo":1652171472413
+   },
+   {
+      "estado":"Enviado",
+      "createdAt":"10 de mayo de 2022",
+      "descripcion":"Manguera OFLEX 2x0'5mm",
+      "referencia":"",
+      "formatoUnidades":"metros",
+      "unidadesAlmacen":20,
+      "id":"aZVnGpVHWiTHjxLb3qrf",
+      "timeAgo":1652171417226
+   },
+   {
+      "referencia":"",
+      "descripcion":"Latiguillo 0'5 m blanco",
+      "createdAt":"10 de mayo de 2022",
+      "formatoUnidades":"unidades",
+      "estado":"Enviado",
+      "unidadesAlmacen":0,
+      "id":"kOZXoMppV5YgYUiQQscn",
+      "timeAgo":1652171362409
+   },
+   {
+      "referencia":"",
+      "createdAt":"10 de mayo de 2022",
+      "formatoUnidades":"unidades",
+      "unidadesAlmacen":0,
+      "estado":"Enviado",
+      "descripcion":"Latiguillo 3 m blanco",
+      "id":"iCeJfarKen8fw1Nxnnjk",
+      "timeAgo":1652171340111
+   },
+   {
+      "unidadesAlmacen":0,
+      "referencia":"",
+      "createdAt":"10 de mayo de 2022",
+      "formatoUnidades":"unidades",
+      "estado":"Enviado",
+      "descripcion":"Latiguillo 5m blanco",
+      "id":"ZkQncDPxx7mUA0FrhBUz",
+      "timeAgo":1652171334321
+   },
+   {
+      "createdAt":"10 de mayo de 2022",
+      "referencia":"",
+      "descripcion":"Punteras 2'5 mm",
+      "unidadesAlmacen":2,
+      "formatoUnidades":"unidades",
+      "estado":"Enviado",
+      "id":"DeBUt0jQSDJUPhFypcKb",
+      "timeAgo":1652171299666
+   },
+   {
+      "estado":"Enviado",
+      "referencia":"",
+      "createdAt":"10 de mayo de 2022",
+      "descripcion":"Terminales anilla 6mm con agujero 8-10mm",
+      "formatoUnidades":"unidades",
+      "unidadesAlmacen":0,
+      "id":"INm0RZCVGwKdwhiCYNQD",
+      "timeAgo":1652171227282
+   },
+   {
+      "referencia":22548,
+      "formatoUnidades":"unidades",
+      "estado":"Enviado",
+      "descripcion":"Funda termoretractil",
+      "unidadesAlmacen":1,
+      "createdAt":"10 de mayo de 2022",
+      "id":"oYv8cg2zZFcOBEyY7nZ6",
+      "timeAgo":1652171061600
+   },
+   {
+      "unidadesAlmacen":0,
+      "descripcion":"Manguera 25 G x 0'5 mm",
+      "formatoUnidades":"metros",
+      "estado":"Enviado",
+      "referencia":5044,
+      "createdAt":"10 de mayo de 2022",
+      "id":"x1P6IErttyUiA97G0Dzn",
+      "timeAgo":1652171031344
+   },
+   {
+      "estado":"Enviado",
+      "descripcion":"Cinta aislante negra",
+      "unidadesAlmacen":1,
+      "referencia":7446,
+      "formatoUnidades":"unidades",
+      "createdAt":"10 de mayo de 2022",
+      "id":"9im7ZcqVSEc75HjsmLbm",
+      "timeAgo":1652170913068
+   },
+   {
+      "descripcion":"Cinta aislante azul",
+      "estado":"Enviado",
+      "formatoUnidades":"unidades",
+      "unidadesAlmacen":1,
+      "referencia":12798,
+      "createdAt":"10 de mayo de 2022",
+      "id":"lojMSfaclsnOlB9B46Qs",
+      "timeAgo":1652170878385
+   },
+   {
+      "unidadesAlmacen":1,
+      "createdAt":"10 de mayo de 2022",
+      "referencia":"",
+      "formatoUnidades":"unidades",
+      "descripcion":"Cable + conector M12 4 pines ",
+      "estado":"Enviado",
+      "id":"OI3carr96VsJKZ0Tzn4H",
+      "timeAgo":1652170817446
+   },
+   {
+      "referencia":"",
+      "unidadesAlmacen":0,
+      "estado":"Enviado",
+      "descripcion":"Cable + conector M12 5 pines",
+      "formatoUnidades":"unidades",
+      "createdAt":"10 de mayo de 2022",
+      "id":"Hu3HTNeZj9sKcuZzhbut",
+      "timeAgo":1652170764228
+   },
+   {
+      "formatoUnidades":"cajas",
+      "descripcion":"Bridas medianas azules",
+      "referencia":12551,
+      "createdAt":"10 de mayo de 2022",
+      "unidadesAlmacen":0,
+      "estado":"Enviado",
+      "id":"NRevwlHG447vwswJDqZj",
+      "timeAgo":1652170714507
+   },
+   {
+      "createdAt":"9 de mayo de 2022",
+      "formatoUnidades":"unidades",
+      "unidadesAlmacen":1,
+      "referencia":"",
+      "estado":"Enviado",
+      "descripcion":"Punteras 4 mm",
+      "id":"NNwU5n66qkjuVqIzPUuE",
+      "timeAgo":1652127448441
+   }
+]
