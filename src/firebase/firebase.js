@@ -164,6 +164,11 @@ export const deletePedido = async (id) =>{
   
 }
 
+export const  pedidoRecibido = async (id)=>{
+  let deleteDocument = doc(db,'pedidos',id);
+  deleteDoc(deleteDocument)
+}
+
 export const onAuthStateChanged = (onChange)=>{
   return firebase
   .auth()

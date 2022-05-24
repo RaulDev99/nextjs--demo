@@ -9,7 +9,7 @@ export default function CardPedido ({descripcion,referencia,unidadesAlmacen,time
     return(
         <>
         {deleteSuccess == false ?
-        <div  className="bg-white flex-row m-1  py-2 px-6 rounded-md shadow-lg ">
+        <div  className="">
             <div className="flex items-center px-6">
                 <b>
                     {referencia ?
@@ -35,6 +35,9 @@ export default function CardPedido ({descripcion,referencia,unidadesAlmacen,time
                         </div> 
                     : null}
                 </div>
+                
+
+
                 {estado ==  'Pendiente de enviar'? 
                 <div>
                     <button id="unidades"  type="button"  onClick={e=>setDeleteModal(true)} className=" tracking-widest block  bg-red-400 text-white border  rounded py-3 px-4 leading-tight focus:outline-none active:bg-blue-300 " >

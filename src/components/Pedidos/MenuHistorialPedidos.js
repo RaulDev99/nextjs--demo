@@ -2,7 +2,7 @@ import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { validateYupSchema } from "formik";
 
 import { useState,useEffect } from "react";
-import db, { getPedidos } from "../../firebase/firebase";
+import db, { getPedidos, pedidoRecibido } from "../../firebase/firebase";
 import useTimeAgo from "../../hooks/useTimeAgo";
 
 import CardConfirmation from "./CardConfirmation";
@@ -104,12 +104,11 @@ export default function MenuHistorialPedidos (){
                                             pedidos.map(({id,descripcion,referencia,createdAt,unidadesAlmacen,timeAgo,estado,formatoUnidades})=>{
                                                 
                                                 return(
-
+                                                    
                                                     <div key={id}>
                                                         {estado == subMenuEstado && fechas == createdAt ?
                                                             
-                                                            <div>
-                                                                
+                                                            <div className="bg-white flex-row m-1  py-2 px-6 rounded-md shadow-lg ">
                                                                 <CardPedido
                                                                 descripcion={descripcion}
                                                                 referencia={referencia}
@@ -119,6 +118,18 @@ export default function MenuHistorialPedidos (){
                                                                 formatoUnidades={formatoUnidades}
                                                                 >  
                                                                 </CardPedido>
+                                                                {estado ==  'Enviado' && 
+                                                                <div className="flex justify-center">
+                                                                    <button className="bg-green-500 text-white rounded px-2 py-1 font-medium tracking-widest " onClick={e=>{ 
+                                                                        var newArray = pedidos.filter((item) => item.id !== id)
+                                                                        setPedidos(newArray)
+                                                                        pedidoRecibido(id)
+                                                                        
+                                                                    }
+                                                                        } >RECIBIDO</button>
+                                                                </div>        
+                                                                }
+
                                                             </div>
                                                         
                                                         
@@ -157,7 +168,7 @@ export default function MenuHistorialPedidos (){
                                                     <div key={id}>
                                                         {estado == subMenuEstado && fechas == createdAt ?
                                                             
-                                                            <div>
+                                                            <div className="bg-white flex-row m-1  py-2 px-6 rounded-md shadow-lg">
                                                                 
                                                                 <CardPedido
                                                                 descripcion={descripcion}
